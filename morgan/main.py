@@ -10,6 +10,7 @@ class Workflow :
         self.var_cible = 'BAD'
         self.method_fillna = 'mean'
         self.pred =['DELINQ','CLAGE','NINQ','DEROG','BAD']
+        self.choix_modele = 'random_forest' # soit regression_logistique soit random_forest
         pass
 
     def processing(self) -> None :
@@ -20,7 +21,7 @@ class Workflow :
         return data_sans_na
 
     def entrainer_et_evaluer(self, data) :
-        y_pred, y_test = self.model.entraîner_modele_et_predire(data, self.var_cible)
+        y_pred, y_test = self.model.entraîner_modele_et_predire(data, self.var_cible, self.choix_modele)
         self.model.metriques(y_pred, y_test)
 
 workflow  = Workflow()

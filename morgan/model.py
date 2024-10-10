@@ -2,6 +2,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
 class ModeleRegLog :
@@ -9,13 +10,20 @@ class ModeleRegLog :
     def __init__(self) -> None:
         pass
 
-    def entraîner_modele_et_predire(self, data : pd.DataFrame, var_cible : str) -> None :
+    def entraîner_modele_et_predire(self, data : pd.DataFrame, var_cible : str, choix_modele : str) -> None :
+
         X = data.drop(columns=[var_cible])
         y = data[var_cible]
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-        logistic_model = LogisticRegression(max_iter=1000)
-        logistic_model.fit(X_train, y_train)
-        y_pred = logistic_model.predict(X_test)
+
+        if choix_modele == 'regression_logistique' :
+            modele = LogisticRegression(max_iter=1000)
+        elif choix_modele == 'random_forest' : 
+            modele = RandomForestClassifier(n_estimators=25)
+        else : print("modele non valide")
+
+        modele.fit(X_train, y_train)
+        y_pred = modele.predict(X_test)
         return y_pred, y_test
 
     def metriques (self, y_pred, y_test ) :
