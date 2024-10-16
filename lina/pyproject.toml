@@ -1,24 +1,19 @@
 [tool.poetry]
-name = "projet-scoring"
+name = "lina"
 version = "0.1.0"
 description = ""
-authors = ["morganjowitt <jowitt.morgan@gmail.com>"]
+authors = ["Lina <lina.benzemma@yahoo.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-numpy = "^2.1.1"
 pandas = "^2.2.3"
 seaborn = "^0.13.2"
-matplotlib = "^3.9.2"
 scikit-learn = "^1.5.2"
-xgboost = "^2.1.1"
-statsmodels = "^0.14.3"
-imblearn = "^0.0"
+scipy = "^1.14.1"
+numpy = "^2.1.2"
+matplotlib = "^3.9.2"
 
-
-[tool.poetry.group.dev.dependencies]
-ipykernel = "^6.29.5"
 
 [build-system]
 requires = ["poetry-core"]
